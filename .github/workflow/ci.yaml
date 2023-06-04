@@ -5,3 +5,17 @@ on:
     branches:
       - main
   pull_request:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/phicorders/rust:latest
+      target: dev
+    steps:
+      - name: Checking Formatting
+        run: |
+          cargo fmt --all -- --check
+      - name: Linting
+        run: |
+          cargo clippy --all-targets --all-features
