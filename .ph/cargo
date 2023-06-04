@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function run_cargo {
+    local command=$1
+
+    run_docker_compose_command "app" "cargo $command"
+}

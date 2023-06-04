@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+function run_docker_compose_command {
+    local container=$1
+    local command="${*:2}"
+
+    docker compose run --rm $container /bin/ash -c "$command"
+}
+
+function up {
+    docker compose up
+}
+
+function up_and_rebuild {
+    docker compose down && docker compose up --build
+}

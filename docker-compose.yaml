@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: rust-app
+    build:
+      dockerfile: ./Dockerfile
+      target: dev
+    tty: true
+    volumes:
+      - .:/usr/src/app
