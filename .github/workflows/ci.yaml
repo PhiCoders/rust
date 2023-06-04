@@ -10,10 +10,14 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/phicorders/rust:latest
+      image: rust:alpine
     steps:
       - name: Checkout main branch
         uses: actions/checkout@main
+      - name: Setup Dependencies
+        run: |
+          rustup update
+          rustup component add clippy rustfmt
       - name: Checking Formatting
         run: |
           cargo fmt --all -- --check
