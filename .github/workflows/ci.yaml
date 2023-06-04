@@ -8,13 +8,9 @@ on:
 
 jobs:
   analyze:
-    runs:
-      using: 'docker'
-      image: 'Dockerfile'
-      target: dev
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/phicorders/rust:latest
-      target: dev
     steps:
       - name: Checking Formatting
         run: |
